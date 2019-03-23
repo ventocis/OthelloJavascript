@@ -258,6 +258,38 @@ module.exports = class Board {
 		return true;
 	}
 
+    /**
+	 * isBoardFull
+	 * @return boolean Whether or not the board is full.
+	 */
+	isBoardFull(){
+		// Stores the number of dashes on the board.
+		var numDash = 0;
+
+		// Checks every board spaces and totals number of dashes.
+		for(let i=0; i<this.height; i++)
+			for(let j=0; j<this.width; j++)
+				if(board[i][j] == -1)
+					numDash++;
+
+		// If the board is full then there are 64 dashes.
+		if(numDash == 64)
+			return true;
+
+		// There were not 64 dashes.
+		return false;
+	}
+
+	/**
+	 * isGameOver
+	 * @return bool Whether or not the game is over.
+	 */
+	isGameOver(){
+		if(this.isValidMoveAvailable(1) == false
+					&& this.isValidMoveAvailable(0) == false )
+			return true;
+		return false;
+	}
 }
 
 //let board = new Board(10, 10);
