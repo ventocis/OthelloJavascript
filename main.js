@@ -41,7 +41,8 @@ function start(){
 	// Local variables
 	let data = loadFile('test.json');	
 	do{
-		var inp = Number(prompt('Enter 1 to load file or 2 to start new game: '));
+		var inp = Number(prompt('Enter 1 to load file ' +
+			'or 2 to start new game: '));
 	}while(inp != 2 && inp != 1);
 	var myR = 0;
 	var myC = 0;
@@ -51,7 +52,8 @@ function start(){
 			myR = Number(prompt('Number of rows: '));
 			myC = Number(prompt('Number of columns: '));
 			if(myR < 4 || myC < 4 || myR > 12 || myC > 12)
-				console.log('Input must be greater than 3 or less than 13');}
+				console.log('Input must be greater than 3 ' + 
+					'or less than 13');}
 		while(myR < 4 || myC < 4 || myR > 12 || myC > 12);
 	}
 	else{
@@ -63,7 +65,7 @@ function start(){
 	if(inp == 1)
 		myBoard.setBoard(data.board);
 	// SYNCHRONOUSLY read from keyboard
-	console.log('Creating a board with size ' + myR + ' x ' + myC + '.');
+	console.log('Creating a board with size ' + myR + ' x ' + myC);
 
 
 	var col = 0;
@@ -74,11 +76,13 @@ function start(){
 		console.log('\n\n');
 		myBoard.printBoard();
 		if(myBoard.isValidMoveAvailable(currPlyr) == false){
-			console.log('No valid moves availables for player ' + currPlyr + '. You lose your turn.\n');
+			console.log('No valid moves availables for player ' + 
+				currPlyr + '. You lose your turn.\n');
 			currPlyr = (currPlyr + 1) % 2;
 		}
 		console.log('Player ' + currPlyr);
-		row = Number(prompt('Enter row (Enter -1 to exit program immediately or -2 to save & exit): '));
+		row = Number(prompt('Enter row (Enter -1 to exit program ' + 
+			'immediately or -2 to save & exit): '));
 		if(row == -1){
 			console.log('Exiting');
 			process.exit();
@@ -91,7 +95,8 @@ function start(){
 		col--;
 		row--;
 
-		if(col >= data.height || col < 0 || row >= data.height || row < 0)
+		if(col >= data.height || col < 0 || 
+			row >= data.height || row < 0)
 			console.log('Please enter valid coordinates');
 		else if(!myBoard.isValidMove(row,col,currPlyr)){
 			console.log('Sorry, not a valid move');
