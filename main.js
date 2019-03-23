@@ -30,7 +30,6 @@ function loadFile(file){
 	const fs = require('fs');
 	let myData = fs.readFileSync('test.json');
 	let game = JSON.parse(myData);
-	console.log(game);
 	return game;
 }
 
